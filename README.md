@@ -10,7 +10,7 @@ docker create \
   -e 'CF_KEY=API_key' \
   -e 'CF_HOST=host.domain.tld' \
   -v /path/to/certs:/dehydrated/certs \
-  kmlucy/docker-dehydrated
+  ingram/dehydrated-cloudflare-cron
   ```
 
 For multiple domains provide a [domains.txt](https://github.com/lukas2511/dehydrated/blob/master/docs/domains_txt.md) instead:
@@ -21,7 +21,7 @@ docker create \
   -e 'CF_KEY=API_key' \
   -v /path/to/certs:/dehydrated/certs \
   -v /path/to/domains.txt:/dehydrated/domains.txt:ro \
-  kmlucy/docker-dehydrated
+  ingram/dehydrated-cloudflare-cron
   ```
 
 Then start container, which will run update script daily (plus once per starting the container):
