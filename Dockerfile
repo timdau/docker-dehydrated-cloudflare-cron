@@ -1,6 +1,7 @@
 FROM python:alpine
 LABEL maintainer="indrek@ardel.eu"
 
+ADD dehydrated /etc/periodic/daily/dehydrated
 RUN apk add --update curl openssl bash git && \
     cd / && \
     git clone https://github.com/lukas2511/dehydrated && \
@@ -10,11 +11,8 @@ RUN apk add --update curl openssl bash git && \
     pip install -r hooks/cloudflare/requirements.txt && \
     apk del git && \
     rm -rf /var/cache/apk/* /tmp/* /var/tmp/ && \
-    echo "#!/bin/bash" > /etc/periodic/daily/dehydrated && \
-    echo "/dehydrated/dehydrated --register --accept-terms >> /dev/stdout" >> /etc/periodic/daily/dehydrated && \
-    echo "/dehydrated/dehydrated -c -d \$CF_HOST -t dns-01 -k 'hooks/cloudflare/hook.py' >> /dev/stdout" >> /etc/periodic/daily/dehydrated && \
     chmod +x /etc/periodic/daily/dehydrated
 
-CMD crond -l 2 -f
+CMD /etc/periodic/daily/dehydrated && crond -l 2 -f
 
 VOLUME /dehydrated/certs
