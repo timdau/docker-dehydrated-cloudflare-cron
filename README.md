@@ -20,7 +20,7 @@ docker create \
   -e 'CF_EMAIL=email@domain.tld' \
   -e 'CF_KEY=API_key' \
   -v /path/to/certs:/dehydrated/certs \
-  -v /path/to/domains.txt:/dehydrated/domains.txt \
+  -v /path/to/domains.txt:/dehydrated/domains.txt:ro \
   kmlucy/docker-dehydrated
   ```
 
