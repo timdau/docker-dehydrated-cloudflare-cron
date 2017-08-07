@@ -10,9 +10,9 @@ RUN apk add --update curl openssl bash git && \
     pip install -r hooks/cloudflare/requirements.txt && \
     apk del git && \
     rm -rf /var/cache/apk/* /tmp/* /var/tmp/ && \
-    cat "#!/bin/bash" > /etc/periodic/daily/dehydrated" \
-        "/dehydrated/dehydrated --register --accept-terms >> /dev/stdout" \
-        "/dehydrated/dehydrated -c -d \$CF_HOST -t dns-01 -k 'hooks/cloudflare/hook.py' >> /dev/stdout" >> /etc/periodic/daily/dehydrated && \
+    echo "#!/bin/bash" > /etc/periodic/daily/dehydrated && \
+    echo "/dehydrated/dehydrated --register --accept-terms >> /dev/stdout" >> /etc/periodic/daily/dehydrated && \
+    echo "/dehydrated/dehydrated -c -d \$CF_HOST -t dns-01 -k 'hooks/cloudflare/hook.py' >> /dev/stdout" >> /etc/periodic/daily/dehydrated && \
     chmod +x /etc/periodic/daily/dehydrated
 
 CMD crond -l 2 -f
