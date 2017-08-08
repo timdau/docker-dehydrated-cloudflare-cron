@@ -1,4 +1,4 @@
-# dehydrated-cloudflare-cron
+# docker-dehydrated-cloudflare-cron
 
 Runs [lukas2511/dehydrated](https://github.com/lukas2511/dehydrated) with [kappataumu/letsencrypt-cloudflare-hook](https://github.com/kappataumu/letsencrypt-cloudflare-hook) as a cron job to acquire and update [Let’s Encrypt](https://letsencrypt.org/) certificates by DNS-01 challenge using [CloudFlare](https://www.cloudflare.com/) as the DNS provider.
 
