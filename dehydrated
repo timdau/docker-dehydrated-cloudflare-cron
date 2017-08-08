@@ -4,7 +4,7 @@ cd /dehydrated
 
 ./dehydrated --register --accept-terms >> /dev/stdout
 
-if [ -f domains.txt ]; then
+if [ -z $CF_HOST ]; then
   ./dehydrated -c -t dns-01 -k 'hooks/cloudflare/hook.py' >> /dev/stdout
 else
   ./dehydrated -c -d $CF_HOST -t dns-01 -k 'hooks/cloudflare/hook.py' >> /dev/stdout
