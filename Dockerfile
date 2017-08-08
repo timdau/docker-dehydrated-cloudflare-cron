@@ -16,4 +16,4 @@ RUN apk add --update curl openssl bash git && \
 
 CMD /etc/periodic/daily/dehydrated && crond -l 2 -f
 
-VOLUME /dehydrated/certs /dehydrated/domains.txt
+VOLUME /dehydrated/certs
