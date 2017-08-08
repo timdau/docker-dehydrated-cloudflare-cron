@@ -11,7 +11,8 @@ RUN apk add --update curl openssl bash git && \
     pip install -r hooks/cloudflare/requirements.txt && \
     apk del git && \
     rm -rf /var/cache/apk/* /tmp/* /var/tmp/ && \
-    chmod +x /etc/periodic/daily/dehydrated
+    chmod +x /etc/periodic/daily/dehydrated && \
+    touch /dehydrated/domains.txt
 
 CMD /etc/periodic/daily/dehydrated && crond -l 2 -f
 
