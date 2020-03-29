@@ -9,3 +9,7 @@ if [ -z $CF_HOST ]; then
 else
   ./dehydrated -c -d $CF_HOST -t dns-01 -k 'hooks/cloudflare/hook.py'
 fi
+
+chown -R nobody:nogroup certs
+chmod -R ugo+r certs
+find certs -type d -exec chmod ugo+x {} \;
