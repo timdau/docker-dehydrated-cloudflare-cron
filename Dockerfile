@@ -1,5 +1,5 @@
 FROM python:alpine
-LABEL maintainer="indrek@ardel.eu"
+LABEL maintainer="kjake"
 
 ADD dehydrated /etc/periodic/daily/dehydrated
 RUN apk add --update curl openssl bash git && \
