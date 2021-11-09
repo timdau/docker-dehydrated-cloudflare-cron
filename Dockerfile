@@ -4,12 +4,11 @@ LABEL maintainer="indrek@ardel.eu"
 ADD dehydrated /etc/periodic/daily/dehydrated
 RUN apk add --update curl openssl bash git && \
     cd / && \
-    git clone https://github.com/lukas2511/dehydrated && \
+    git clone https://github.com/dehydrated-io/dehydrated && \
     cd dehydrated && \
     mkdir hooks && \
-    git clone https://github.com/kappataumu/letsencrypt-cloudflare-hook hooks/cloudflare && \
+    git clone https://github.com/walcony/letsencrypt-cloudflare-hook hooks/cloudflare && \
     pip install -r hooks/cloudflare/requirements.txt && \
-    pip install urllib3 && \
     apk del git && \
     rm -rf /var/cache/apk/* /tmp/* /var/tmp/ && \
     chmod +x /etc/periodic/daily/dehydrated && \
