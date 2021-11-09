@@ -1,6 +1,6 @@
 # docker-dehydrated-cloudflare-cron
 
-Runs [lukas2511/dehydrated](https://github.com/lukas2511/dehydrated) with [kappataumu/letsencrypt-cloudflare-hook](https://github.com/kappataumu/letsencrypt-cloudflare-hook) as a cron job to acquire and update [Let’s Encrypt](https://letsencrypt.org/) certificates by DNS-01 challenge using [CloudFlare](https://www.cloudflare.com/) as the DNS provider.
+Runs [dehydrated-io/dehydrated](https://github.com/dehydrated-io/dehydrated) with [walcony/letsencrypt-cloudflare-hook](https://github.com/walcony/letsencrypt-cloudflare-hook) as a cron job to acquire and update [Let’s Encrypt](https://letsencrypt.org/) certificates by DNS-01 challenge using [CloudFlare](https://www.cloudflare.com/) as the DNS provider.
 
 For using with single domain:
 ```
@@ -17,7 +17,7 @@ It is possible to generate one certificate containing alternative domains withou
 -e 'CF_HOST=host1.domain.tld -d host2.domain.tld -d host3.domain.tld' \
 ```
 
-For use with multiple domains and certificates, provide a [domains.txt](https://github.com/lukas2511/dehydrated/blob/master/docs/domains_txt.md) instead, `CF_HOST` environment variable needs to be unset or empty for this to work:
+For use with multiple domains and certificates, provide a [domains.txt](https://github.com/dehydrated-io/dehydrated/blob/master/docs/domains_txt.md) instead, `CF_HOST` environment variable needs to be unset or empty for this to work:
 ```
 docker create \
   --name=dehydrated \
