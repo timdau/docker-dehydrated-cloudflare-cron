@@ -9,6 +9,7 @@ RUN apk add --update curl openssl bash git && \
     mkdir hooks && \
     git clone https://github.com/kappataumu/letsencrypt-cloudflare-hook hooks/cloudflare && \
     pip install -r hooks/cloudflare/requirements.txt && \
+    pip install urllib3 && \
     apk del git && \
     rm -rf /var/cache/apk/* /tmp/* /var/tmp/ && \
     chmod +x /etc/periodic/daily/dehydrated && \
